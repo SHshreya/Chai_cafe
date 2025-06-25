@@ -1,0 +1,31 @@
+{% extends "layout.html" %}
+{% block title %}
+Chai detail page
+{% endblock %}
+{% block content %}
+<h1>chai detail page</h1>
+<div class="flex flex-col items-center justify-center min-h-screen bg-blue-900 text-white">
+    <table class="w-3/4 max-w-2xl border-4 border-black rounded-lg shadow-lg mt-[-100px]">
+        <thead class="bg-red-500 text-white text-lg">
+            <tr>
+                <th class="p-4 border-2 border-black">NAME OF CHAI</th>
+                <th class="p-4 border-2 border-black">PRICE</th>
+                <th class="p-4 border-2 border-black">DESCRIPTION</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr class="bg-green-600 text-white border-2 border-black">
+                <td class="p-4 text-center font-medium border-2 border-black">{{ chai.name }}</td>
+                <td class="p-4 text-center font-semibold border-2 border-black">₹{{ chai.price }}</td>
+                <td class="p-4 text-center italic border-2 border-black">{{ chai.chai_description }}</td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+
+
+
+
+
+
+{% endblock %}

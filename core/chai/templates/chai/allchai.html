@@ -1,0 +1,67 @@
+{% extends "layout.html" %}
+{% block title %}
+Chai page
+{% endblock %}
+
+{% block content %}
+<div class="bg-blue-1200 min-h-screen p-6 flex flex-col items-center">
+<h1 class="text-3xl font-bold text-center text-grey-1000 mb-6">All Types Of Chai Available</h1>
+
+<form method="get" action="{% url 'allchai' %}" class="p-4 bg-gray-100 gap-2 rounded-lg flex justify-center mb-8 border-4 border-indigo-600">
+  <input type="text" name="search" placeholder="Search chai by name..." value="{{ search }}" class="p-2 border-2 border-gray-400 text-black" />
+
+  <select name="chai_type" class="p-2  text-black border-2 border-gray-400 text-black">
+    <option value="all">All Types</option>
+    <option value="ML" {% if selected_type == "ML" %}selected{% endif %}>Masala</option>
+    <option value="CL" {% if chai_type_choice == "CL" %}selected{% endif %}>Coldice</option>
+    <option value="GR" {% if  chai_type_choice == "GR" %}selected{% endif %}>Ginger</option>
+    <option value="PL" {% if chai_type_choice == "PL" %}selected{% endif %}>Plain</option>
+    <option value="EL" {% if chai_type_choice == "EL" %}selected{% endif %}>Elaichi</option>
+    <option value="KI" {% if chai_type_choice == "KI" %}selected{% endif %}>Kiwi</option>
+  </select>
+
+  <input type="number" name="min_price" placeholder="Min Price" value="{{ min_price }}" class="p-2  w-24 text-black border-2 border-gray-400 text-black" />
+  <input type="number" name="max_price" placeholder="Max Price" value="{{ max_price }}" class="p-2  w-24 text-black border-2 border-gray-400 text-black" />
+
+  <select name="availability" class="p-2  text-black border-2 border-gray-400 text-black">
+    <option value="">All</option>
+    <option value="true" {% if availability == "true" %}selected{% endif %}>Available</option>
+    <option value="false" {% if availability == "false" %}selected{% endif %}>Not Available</option>
+  </select>
+
+  <button type="submit" class="bg-green-600 text-white px-4 py-2 rounded hover:bg-green-700 ml-2">
+    Filter
+  </button>
+</form>
+
+
+   <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-x-16 gap-y-16 w-full max-w-5xl">
+{% for chai in chais %}
+      <div  class="bg-white rounded-lg shadow-lg overflow-hidden">
+    <img src="{{ chai.image.url }}" alt="chai" class="w-full h-56 object-cover">
+    <div "p-4 text-center">
+    <h3 class="text-lg text-center font-bold text-black bg-yellow-500">{{ chai.name }}</h3>
+    
+    <div class="flex justify-center">
+        <a href="{% url  'chai_detail' chai.id%}">
+    <button type="button" class="mt-2 mx-14 border-2 border-black text-sm bg-green-600 hover:bg-blue-700 text-black font-bold py-1 px-8 mb-1 rounded-md shadow-md">
+        Show Detail
+        {{chai.type}}-{{chai.id}}
+        
+    </button>
+</a>
+</div>
+
+    </div> 
+      </div>
+   {% endfor %}
+    </div>
+    
+
+    <div class="mt-12 text-center text-white text-2xl font-semibold italic">
+        "Sip the Tradition, Taste the Love."
+    </div>
+
+    <p class="text-white text-sm mt-4">All-time orders are available</p>
+</div>
+{% endblock %}

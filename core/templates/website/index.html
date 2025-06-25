@@ -1,0 +1,38 @@
+{% extends "layout.html" %}
+{% load static %}
+{% block title %}Home Page{% endblock %}
+
+{% block content %}
+
+<!-- Typewriter heading just below navbar -->
+ <div class="flex mt-6 px-4 py-2">
+<div class="bg-yellow-100 py-2 px-2 text-center ">
+  <h1 class="text-3xl md:text-4xl font-bold text-black">
+    <span id="typewriter" class="border-r-4 border-black pr-1"></span>
+  </h1>
+</div>
+</div>
+
+<div class="mt-8 px-2">
+  <img src="{% static 'images/9fde8f4e-4c3b-44f2-ae36-39f891f37ce2.jpg' %}" 
+       alt="chai" 
+       class="w-44 h-44 rounded-full object-cover shadow-md ">
+</div>
+
+<!-- Rest of your home content -->
+<div class="text-center mt-10">
+  <h1 class="text-4xl font-bold bg-green-300 text-black px-8 py-4 rounded-lg shadow-xl">
+    Go to the Chai section and explore all chais  👉 👉 
+  </h1>
+  <p class="mt-4 text-lg font-bold text-gray-300">
+    Welcome to the best place to have best taste of chai ☕
+  </p>
+  <!--
+  <a href="{% url 'about' %}" 
+     class="mt-6 inline-block bg-blue-600 text-white px-6 py-3 rounded-lg shadow hover:bg-blue-700 transition">
+    Learn More
+  </a>
+-->
+</div>
+<script src={% static 'js/main.js' %}></script>
+{% endblock %}
